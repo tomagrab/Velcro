@@ -86,3 +86,36 @@ textarea {
 #copy-button:hover {
     background-color: #45a049; /* Slightly darker green on hover */
 }
+
+#saved-tickets {
+    position: fixed; /* Keep it fixed in position */
+    left: 0;         /* Position it on the left edge */
+    top: 50px;       /* Adjust top offset as needed */
+    width: 200px;    /* Specify the desired width */
+    background-color: #f0f0f0; /* Light background color */
+    border: 1px solid #ccc;    /* Subtle border */
+    padding: 15px;             /* Add internal padding */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  }
+
+  /* Style for the ticket list container */
+#saved-ticket-list { 
+    /* Add styles as needed (e.g., spacing) */
+};
+  
+  /* Style for the individual ticket buttons */
+  #saved-ticket-list button {
+    background-color: #4CAF50; /* Example: Green background */
+    color: white;
+    padding: 10px 15px;
+    margin: 5px 0; /* Spacing between buttons */
+    border: none;
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth hover effect */
+  }
+  
+  #saved-ticket-list button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+  }
+  

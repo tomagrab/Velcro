@@ -94,3 +94,41 @@ copyButton.addEventListener('click', () => {
 
     document.body.removeChild(tempTextArea); 
 });
+
+
+// Saving tickets
+
+function saveFormattedTicket(formattedText) {
+    const timestamp = new Date().toLocaleString(); // Get formatted date and time
+  
+    const savedTickets = JSON.parse(localStorage.getItem('savedTickets')) || [];
+    savedTickets.push({ text: formattedText, timestamp: timestamp }); 
+    if (savedTickets.length > 3) {
+      savedTickets.shift(); // Limit to three tickets
+    }
+    localStorage.setItem('savedTickets', JSON.stringify(savedTickets));
+    updateSavedTicketList();
+};
+  
+  function updateSavedTicketList() {
+    const savedTicketList = document.getElementById('saved-ticket-list');
+    savedTicketList.innerHTML = ''; // Clear existing list 
+  
+    const savedTickets = JSON.parse(localStorage.getItem('savedTickets')) || [];
+  
+    savedTickets.forEach(ticket => {
+      const button = document.createElement('button');
+      button.textContent = ticket.timestamp;
+      button.addEventListener('click', () => { 
+        loadTicket(ticket.text); // Add functionality to load the ticket
+      });
+      savedTicketList.appendChild(button);
+    });
+};
+  
+  function loadTicket(formattedText) {
+    // Implement logic to populate the form fields 
+    // with the loaded `formattedText` here
+};
+
+  
