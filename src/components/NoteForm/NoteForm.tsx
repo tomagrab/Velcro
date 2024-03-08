@@ -14,7 +14,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Textarea } from '../ui/textarea';
 import { useEffect, useState } from 'react';
-import { CreateNote } from '@/app/actions/NoteActions/NoteActions';
+import { CreateNote, UpdateNote } from '@/app/actions/NoteActions/NoteActions';
 import { notes } from '@prisma/client';
 
 type NoteFormProps = {
@@ -47,6 +47,17 @@ export default function NoteForm({
 
   const onSubmit = async (values: z.infer<typeof NoteFormSchema>) => {
     setLoading(true);
+
+    if (notesPreview) {
+      // Call the UpdateNote action
+      await UpdateNote({
+        ...values,
+        id: notesPreview.id,
+      });
+
+      setLoading(false);
+      return;
+    }
 
     // Call the CreateNote action
     await CreateNote({

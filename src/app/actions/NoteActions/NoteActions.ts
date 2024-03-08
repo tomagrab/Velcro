@@ -56,6 +56,7 @@ export const UpdateNote = async (
     throw new Error('Error updating note');
   }
 
+  revalidatePath(`/`);
   return updatedNote;
 };
 
